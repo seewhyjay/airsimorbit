@@ -56,7 +56,7 @@ for step in range(0, elevation_steps):
         angle = math.atan((tempy-center[1])/(tempx-center[0]))
         if tempx - center[0] >= 0:
             angle += pi
-        camera_pose = airsim.Pose(airsim.Vector3r(tempx, tempy, -currentelevation), airsim.to_quaternion(-lookdown, 0, angle))
+        camera_pose = airsim.Pose(airsim.Vector3r(tempx, tempy, -currentelevation), airsim.to_quaternion(-lookdown, 0, angle)) # -currentelevation and -lookdown because of the environment I was testing in
         client.simSetCameraPose("0", camera_pose)
         responses = client.simGetImages([
         airsim.ImageRequest("0", airsim.ImageType.Segmentation, False, False),
